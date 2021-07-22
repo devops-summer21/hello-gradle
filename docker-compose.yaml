@@ -12,10 +12,11 @@ services:
     restart: unless-stopped
     volumes:
         - mariadb:/var/lib/mysql
-      environment:
-       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
-       MYSQL_DATABASE: ${NAME_DB}
-       MYSQL_USER: ${MYSQL_USER}
-       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    environment:
+     MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+     MYSQL_DATABASE: ${NAME_DB}
+     MYSQL_USER: ${MYSQL_USER}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-volumes: mariadb
+volumes:
+  mariadb:
