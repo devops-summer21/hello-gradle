@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   webapp:
-    image: wepapp
+    image: appweb
     build: .
     restart: unless-stopped
     ports: 

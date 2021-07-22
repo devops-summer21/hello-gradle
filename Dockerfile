@@ -1,7 +1,8 @@
 #Imagen Gradle con copia de proyecto actual Hello-Gradle
-FROM openjdk:11
-COPY . /var/scr/app
-ENV PATH "$PATH:/var/scr/app"
-WORKDIR /var/scr/app
-RUN gradlew bootRun
-#ENTRYPOINT ["./gradlew bootRun"]
+FROM gradle:7.1.1-jdk11
+EXPOSE 8080
+WORKDIR /opt/hello-gradle
+COPY ./ ./
+#ENV PATH "$PATH:/var/scr/app"
+CMD ./gradlew bootRun
+#ENTRYPOINT ["java","./gradlew bootRun"]
