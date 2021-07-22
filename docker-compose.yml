@@ -1,7 +1,8 @@
-version:"3.0"
+version: "3.0"
 services:
-   gradle:
-      image: tarea-gradle:latest
-      build: .
-      ports: 
-        -"80:8080"
+  hello:
+    image: hello-gradle:latest
+    build: .
+    ports:
+      - "80:8080"
+
