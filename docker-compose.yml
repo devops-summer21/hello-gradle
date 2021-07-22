@@ -1,0 +1,19 @@
+version:"3.1"
+
+services:
+
+  Amazoncorretto:8-alpine-full
+       image: "amazoncorretto:latest"
+       restart: "unless stop"
+       container_name: "AmazonJava-Alpine"
+   
+  Gradle:
+      name: gradle/openj9
+      image: "gradle:7.1.1-jdk8-openj9"
+      restart: "unless stop"
+      ports:
+         - "8000:80"
+      volumes:
+         - gradle:/var/www/html/
+  volumes:
+     gradle:
