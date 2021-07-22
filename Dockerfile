@@ -9,3 +9,4 @@ CMD java -jar demo-0.0.1-SNAPSHOT.jar
 
 FROM mariadb:10.6.3-focal
 RUN apt-get update -y
+WORKDIR /var/lib/mysql ./
