@@ -38,3 +38,7 @@ out/
 
 ### Git ###
 .Git
+.gitignore
+
+### Docker ###
+.env
