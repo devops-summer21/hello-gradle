@@ -1,5 +1,6 @@
 FROM openjdk:11
 WORKDIR /opt/hello-gradle
-COPY build/libs/demo-0.0.1-SNAPSHOT.jar ./
-CMD java -jar demo-0.0.1-SNAPSHOT.jar
+COPY ./ ./
+RUN ./gradlew assemble && RUN rm -rf /root/.gradlew 
+CMD java -jar build/libs/demo-0.0.01-SNAPHOT.jar
 
