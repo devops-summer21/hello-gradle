@@ -1,22 +1,8 @@
 version: "3.0"
 services:
-  webapp:
-    image: appweb
+  hello:
+    image: hello-gradle:latest
     build: .
-    restart: unless-stopped
-    ports: 
-    - "80:8080"
-  mariadb:
-    image: mariadb:10.6.3-focal
-    build: .
-    restart: unless-stopped
-    volumes:
-        - mariadb:/var/lib/mysql
-    environment:
-     MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
-     MYSQL_DATABASE: ${NAME_DB}
-     MYSQL_USER: ${MYSQL_USER}
-     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "80:8080"
 
-volumes:
-  mariadb:
