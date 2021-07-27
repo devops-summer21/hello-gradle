@@ -4,18 +4,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo \'Building..\''
+                sh 'docker-compose build 
+                docker image tag hello-gradle:latest  hello-gradle:1.0.${BUILD_NUMBER}-${GIT_COMMIT}''
             }
         }
-        stage('Test') {
+        stage('Deploying') {
             steps {
-                sh 'echo \'Testing..\''
+                sh 'docker-compose up -d''
+            
             }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo \'Deploying..\''
-            }
+       
         }
     }
 }
