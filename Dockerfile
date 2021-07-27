@@ -1,4 +1,11 @@
-##Amazon correto 11 con al pine y jdk###
-FROM amazoncorretto:11-alpine-jdk
-     COPY build/libs/demo-0.0.1-SNAPSHOT.jar ./
-     CMD java -jar demo-0.0.1-SNAPSHOT.jar
+# Build stage
+FROM openjdk:11 AS base
+WORKDIR /opt/hello-gradle
+COPY ./ ./
+RUN ./gradlew assemble
+
+# Runtime stage
+FROM amazoncorretto:11
+WORKDIR /opt/hello-gradle
+COPY --from=base /opt/hello-gradle/build/libs/demo-0.0.1-SNAPSHOT.jar ./
+CMD java -jar demo-0.0.1-SNAPSHOT.jar
