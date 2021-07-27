@@ -6,14 +6,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Assemble'
-                sh ''' ./gradlew assemble '''
+                echo 'Building..'
+		withGradle {
+			sh './gradlew assemble'
+		}
+            }
+            post {
+                success {
+                   archiveArtifacts artifacts: 'build/libs/*.jar'
+                }
+            }
+
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
         }
-        stage ( 'Archive')
-        steps {
-            echo 'Archivando...'
-            archiveArtifacts: 'build/libs/*.jar'
-        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
+}
