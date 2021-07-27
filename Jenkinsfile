@@ -6,17 +6,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo '\033[34mConstruyendo\033[0m\033[33mcolorido\033[0m\033[35mimagen\033[0m'
-                sh '''docker-compose build
-                docker image tag hello-gradle hello-gradle:MAIN-1.0.${BUILD_NUMBER}'''
+                echo 'Assemble'
+                sh ''' ./gradlew assemble '''
             }
         }
-         stage('Deploy') {
-            steps {
-                echo 'Despliegue'
-                sh '''docker-compose build                
-                docker-compose up -d'''
-            }
+        stage ( 'Archive')
+        steps {
+            echo 'Archivando...'
+            archiveArtifacts: 'build/libs/*.jar'
+        }
         }
     }
-}
