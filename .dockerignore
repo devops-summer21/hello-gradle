@@ -1,4 +1,15 @@
-.git*
-Dockerfile
-docker-compose.yml
-.dockerignore
+#Ignore the logs directory
+logs/
+
+#Ignoring the password file
+passwords.txt
+
+#Ignoring git and cache folders
+.git
+.cache
+
+#Ignoring all the markdown and class files
+*.md
+**/*.class
+“tmp”
+“logs”
